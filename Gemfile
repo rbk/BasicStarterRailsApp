@@ -32,8 +32,15 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :development do
+	gem 'guard'
+  gem 'guard-livereload', require: false
+  gem "hirb", "~> 0.7.1"
+end
+
 # Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
+gem 'bcrypt', '~> 3.1.2'
+
 
 # Use unicorn as the app server
 # gem 'unicorn'

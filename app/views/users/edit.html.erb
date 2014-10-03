@@ -1,0 +1,7 @@
+<h1>Editing - <%= @user.first_name %> <%= @user.last_name %></h1>
+
+<% if notice %>
+	<div class="notice alert"><%= notice %></div>
+<% end %>
+
+<%= render 'form' %>
