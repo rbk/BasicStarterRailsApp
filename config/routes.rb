@@ -1,12 +1,19 @@
 Richard::Application.routes.draw do
 
-  get "sessions/index"
-  get "sessions/create"
-  get "sessions/destroy"
-  get "pages/home"
-  get "pages/signup"
-  get "pages/about"
+  post "sessions/new"
+  post "sessions/destroy"
+  
+  get "sessions" => "pages#sessions"
+  get "signup" => "pages#signup"
+  get "about" => "pages#about"
+  get "login" => "pages#login"
+  get "routes" => "pages#routes"
+  get "terminal" => "pages#terminal"
+  post "terminal" => "pages#terminal"
+
   resources :users
+
+  root 'pages#home'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

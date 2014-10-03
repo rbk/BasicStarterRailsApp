@@ -1,0 +1,16 @@
+<h1>Terminal</h1>
+
+<pre>
+	<%= @output %>
+</pre>
+
+<%= form_tag( '/terminal') do %>
+	<div class="form-group">
+		<%= label_tag :command %>
+		<%= text_field_tag :command, '', :class => 'form-control' %>
+	</div>
+	<div class="form-group">
+		<%= submit_tag 'Send', :class => 'btn btn-default' %>
+	</div>
+<% end %>
+

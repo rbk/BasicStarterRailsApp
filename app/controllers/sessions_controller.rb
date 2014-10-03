@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
-  def index
+  def new
+  	respond_to do |format|
+  		format.html { redirect_to login_path, notice: "Login form not setup!" }
+  	end
   end
 
   def create
