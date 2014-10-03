@@ -1,5 +1,8 @@
 Richard::Application.routes.draw do
 
+  get "sessions/index"
+  get "sessions/create"
+  get "sessions/destroy"
   get "pages/home"
   get "pages/signup"
   get "pages/about"
