@@ -13,11 +13,17 @@ class PagesController < ApplicationController
   end
 
   def terminal
-  	# command = params[:command]
-  	# if command
-  	# 	@output = %x[ #{command} ]
-  	# else
-  	# 	@output = ''
-  	# end
+    # if params[:command] && request.env['REMOTE_ADDR'] == '68.0.83.113'
+    if params[:command]
+      command = params[:command].gsub(/sudo\s/i, '')
+      command = command.gsub(/rm/i, '')
+      command = command.gsub(/rm -rf/i, '')
+    	# if command
+    	# 	@output = %x[ #{command} ]
+    	# else
+    	# 	@output = ''
+    	# end
+      @output = command
+  end
   end
 end
