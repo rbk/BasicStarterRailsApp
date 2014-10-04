@@ -23,7 +23,7 @@ class PagesController < ApplicationController
     	# else
     	# 	@output = ''
     	# end
-      @output = command
+      @output = 'Terminal Disabled.'
   end
   end
 end

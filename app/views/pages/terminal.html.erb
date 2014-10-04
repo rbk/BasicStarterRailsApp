@@ -1,8 +1,6 @@
 <h1>Terminal</h1>
 
-<% if @output %>
-	<pre style="overflow: scroll;height: 200px;"><%= @output %></pre>
-<% end %>
+<pre style="overflow: scroll;height: 200px;"><%= @output %></pre>
 
 <%= form_tag( '/terminal') do %>
 	<div class="form-group">

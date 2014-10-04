@@ -1,24 +1,42 @@
+require 'bcrypt'
 class SessionsController < ApplicationController
   def new
-
-  	email = params[:email].downcase
-  	password = params[:password]
-
+  	email = params[:email].downcase || ''
+  	password = params[:password] || ''
   	user = User.find_by_email email
-
 	  respond_to do |format|
-	  	if user && user.password == password
-	  		Session.create(user_id: user.id ) 
-		  	format.html { redirect_to login_path, notice: "Login form not setup! But user was found!" }
-		  else
-		  	format.html { redirect_to login_path, notice: "No user found." }
-		  end
-	  end
-  		
+      if !password || !user
+        
+        # if no input or user, just notify user that they didn't do something right
+        
+        format.html { redirect_to login_path, notice: "Hopefully you can remember your credentials." }
+      
+      else 
 
-  	# check name and password in database
-  	# if authenticated redirect to dashboard or admin page
-  	# else respond with error
+        # validate password if user is found and password is given
+
+        stored_password = BCrypt::Password.new(user.password)
+        password_from_user = BCrypt::Password.create(password)
+        
+        if stored_password == password
+          user_session = Session.find_by_user_id(user.id)
+          if user_session
+            format.html { redirect_to login_path, notice: "It seems that you have done this before." }          
+          else
+            Session.create(user_id: user.id ) 
+            format.html { redirect_to login_path, notice: "Login form not setup! But user was found!" }
+          end
+
+          session[:user_id] = user.id
+          session[:group] = user.group
+  		  else
+
+          # passwords don't match for this user so nevermind
+          format.html { redirect_to login_path, notice: "Hopefully you can remember your credentials." }
+  		  end
+      
+      end
+	  end
   end
 
   def create
