@@ -23,8 +23,8 @@ class SessionsController < ApplicationController
           if user_session
             format.html { redirect_to login_path, notice: "It seems that you have done this before." }          
           else
-            Session.create(user_id: user.id ) 
-            format.html { redirect_to login_path, notice: "Login form not setup! But user was found!" }
+            Session.create({user_id: user.id, email: user.email, group: user.group }) 
+            format.html { redirect_to login_path, notice: "Login Successful! Welcome back!" }
           end
 
           session[:user_id] = user.id
