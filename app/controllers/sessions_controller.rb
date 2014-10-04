@@ -1,5 +1,7 @@
-require 'bcrypt'
 class SessionsController < ApplicationController
+
+  before_action :authenticate, only: [ :destroy ]
+  
   def new
   	email = params[:email].downcase || ''
   	password = params[:password] || ''
@@ -45,7 +47,10 @@ class SessionsController < ApplicationController
 
   def destroy
   	# log out/remove sessions entry from database
-  	
+    Session.where(:user_id => session[:user_id]).destroy_all
+    session[:user_id] = nil
+    session[:group] = nil
+    redirect_to login_path, notice: "You are logged out!"
   	
   end
 end

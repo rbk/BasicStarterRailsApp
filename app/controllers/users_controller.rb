@@ -1,17 +1,15 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [ :edit, :update, :destroy ]
+  before_action :set_user, only: [ :edit, :update, :destroy, :show ]
   before_action :authenticate
-
-  def authenticate
-    # determine with user has a session in the db
-    # redirect to login if the answer is no
-  end
 
   def index
   	@users = User.all
   end
 
   def edit
+  end
+
+  def show
   end
 
   def new

@@ -6,7 +6,10 @@ Richard::Application.routes.draw do
   get "sessions" => "pages#sessions"
   get "signup" => "pages#signup"
   get "about" => "pages#about"
+
   get "login" => "pages#login"
+  get "logout" => "sessions#destroy"
+
   get "routes" => "pages#routes"
   get "terminal" => "pages#terminal"
   post "terminal" => "pages#terminal"
