@@ -1,5 +1,5 @@
-rails g migration AddEmailToSessionModel
-rails g migration AddGroupToSessionModel
+rails g migration AddEmailToSession email:string
+rails g migration AddGroupToSession group:string
 
 
 
