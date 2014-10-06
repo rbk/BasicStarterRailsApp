@@ -19,8 +19,11 @@ class SessionsController < ApplicationController
         stored_password = BCrypt::Password.new(user.password)
 
         if stored_password == password
-          user_session = Session.find_by_user_id(user.id)
-          if user_session
+
+          user_session = Session.where("user_id = ? AND ip = ?", user.id, request.env['REMOTE_ADDR'])
+
+          # user_session = Session.find_by_user_id(user.id)
+          if user_session.any?
             format.html { redirect_to login_path, notice: "It seems that you have done this before." }          
           else
             Session.create({user_id: user.id, email: user.email, group: user.group, ip: request.env['REMOTE_ADDR'] }) 
@@ -39,13 +42,9 @@ class SessionsController < ApplicationController
 	  end
   end
 
-  def create
-  	# not sure
-  end
-
   def destroy
   	# log out/remove sessions entry from database
-    Session.where(:user_id => session[:user_id]).destroy_all
+    Session.where(:user_id => session[:user_id], :ip => request.env['REMOTE_ADDR'] ).destroy_all
     session[:user_id] = nil
     session[:group] = nil
     redirect_to login_path, notice: "You are logged out!"

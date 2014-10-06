@@ -15,10 +15,15 @@ on submit to session new
 	application wide authentication
 		- always check for proper session cookie stored on device
 
-Log Model
-	Log user logins and atttempts
+Log Model !!!
+	- Log in count
+		- first login change password
+	- Log user logins and atttempts
 		- time, success/failure, ip address, email
 		- after three failures, offer to reset password
+
+-
+rails g model SessionLog email:string user_id:integer login_count:integer ip_address:string
 
 
 Blog Model

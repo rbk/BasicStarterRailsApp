@@ -4,8 +4,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
  def authenticate
-    if session[:user_id].nil?
+    if session[:user_id].nil? 
       redirect_to login_path, notice: 'Please login.'
+    end
+  end
+
+  def authenticate_admin
+    if session[:user_id].nil? || session[:group] != 'admin'
+      redirect_to login_path, notice: 'Access Denied.'
     end
   end
 
