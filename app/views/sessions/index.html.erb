@@ -1,0 +1,20 @@
+<h1>Sessions</h1>
+<p>Users currently logged in:</p>
+<table class="table">
+	<thead>
+		<tr>
+			<th>User ID</th>
+			<th>Email</th>
+			<th>Group</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @sessions.each do |user| %>
+		<tr>
+			<td><%= user.user_id %></td>
+			<td><%= user.email %></td>
+			<td><%= user.group %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

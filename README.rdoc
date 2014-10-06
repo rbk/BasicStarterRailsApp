@@ -15,7 +15,26 @@ on submit to session new
 	application wide authentication
 		- always check for proper session cookie stored on device
 
+Log Model
+	Log user logins and atttempts
+		- time, success/failure, ip address, email
+		- after three failures, offer to reset password
 
-Log user logins and atttempts
-	- time, success/failure, ip address, email
-	- after three failures, offer to reset password
+
+Blog Model
+	- title
+	- content
+	- author
+	- date published
+	- categories
+	- tags(for tag cloud)
+	- comments
+	- bookmarks (button that saves bookmark and increments counter in db)
+	- star rating
+	- approx read time ( how to calculate? )
+
+users have one account
+	- Account Model
+		- ?
+users have many blog posts
+

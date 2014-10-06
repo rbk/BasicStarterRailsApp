@@ -24,6 +24,6 @@ class PagesController < ApplicationController
     	# 	@output = ''
     	# end
       @output = 'Terminal Disabled.'
-  end
+    end
   end
 end

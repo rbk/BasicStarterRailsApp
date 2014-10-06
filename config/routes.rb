@@ -3,7 +3,7 @@ Richard::Application.routes.draw do
   post "sessions/new"
   post "sessions/destroy"
   
-  get "sessions" => "pages#sessions"
+  get "sessions" => "sessions#index"
   get "signup" => "pages#signup"
   get "about" => "pages#about"
 

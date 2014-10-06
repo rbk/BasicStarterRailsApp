@@ -16,16 +16,14 @@ class SessionsController < ApplicationController
       else 
 
         # validate password if user is found and password is given
-
         stored_password = BCrypt::Password.new(user.password)
-        password_from_user = BCrypt::Password.create(password)
-        
+
         if stored_password == password
           user_session = Session.find_by_user_id(user.id)
           if user_session
             format.html { redirect_to login_path, notice: "It seems that you have done this before." }          
           else
-            Session.create({user_id: user.id, email: user.email, group: user.group }) 
+            Session.create({user_id: user.id, email: user.email, group: user.group, ip: request.env['REMOTE_ADDR'] }) 
             format.html { redirect_to login_path, notice: "Login Successful! Welcome back!" }
           end
 
@@ -52,5 +50,8 @@ class SessionsController < ApplicationController
     session[:group] = nil
     redirect_to login_path, notice: "You are logged out!"
   	
+  end
+  def index
+    @sessions = Session.all
   end
 end
