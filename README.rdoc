@@ -24,11 +24,13 @@ Log Model !!!
 		- time, success/failure, ip address, email
 		- after three failures, offer to reset password
 
-Access Log
+# Generate Access Log Model
 rails g model AccessLog outcome:string email:string ip_address:string http_user_agent:string
 
 
-- Active users log?
+# Add login count to Users
+rails g migration AddLoginCountToUsers login_count:integer
+
 
 Blog Model
 	- title
@@ -48,3 +50,11 @@ users have one account
 		- ?
 users have many blog posts
 
+
+
+# Brainstorm ( or at least a sprinkle..)
+
+- Blog: with markdown editor, uploads, themes(would be really cool, thinking multi user)
+- Embeddable forms: Integrate SSL, Iframe, Donator is big deal for GuRuStu!!!, form creator important, Paypal/Stripe, Email notifications
+- Shareaplan.com: Social media just for teachers! Alternative to GoogleDocs File sharing, twitter like feeds, lesson collaboration, chat, free accounts, Amazon EC2 for sure.
+- A personal blog

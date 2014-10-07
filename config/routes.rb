@@ -4,8 +4,13 @@ Richard::Application.routes.draw do
   post "sessions/destroy"
   
   get "sessions" => "sessions#index"
+  
+  get "accesslog" => "pages#access_log"
+
+
   get "signup" => "pages#signup"
   get "about" => "pages#about"
+  get "account" => "pages#account"
 
   get "login" => "pages#login"
   get "logout" => "sessions#destroy"

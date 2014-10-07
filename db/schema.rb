@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141007051749) do
+ActiveRecord::Schema.define(version: 20141007052825) do
 
   create_table "access_logs", force: true do |t|
     t.string   "outcome"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20141007051749) do
     t.string   "group"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "login_count"
   end
 
 end

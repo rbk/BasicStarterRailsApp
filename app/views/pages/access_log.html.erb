@@ -1,0 +1,28 @@
+<h1>Access Log</h1>
+<p>Somehow we'll need to prevent an IP from attempting to login after three failures in a row.</p>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Timestamp</th>
+			<th>Outcome</th>
+			<th>Email</th>
+			<th>IP Address</th>
+			<th>User Agent</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @access.each do |attempt| %>
+			<% if attempt.outcome == 'failure' %>
+				<tr style="background-color:#FFBEBE;">
+			<% else %>
+				<tr style="background-color:#D0FFD0">
+			<% end %>
+			<td><%= time_ago_in_words(attempt.created_at) %>&nbsp;ago</td>
+			<td><%= attempt.outcome %></td>
+			<td><%= attempt.email %></td>
+			<td><%= attempt.ip_address %></td>
+			<td><%= attempt.http_user_agent[0..50] %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

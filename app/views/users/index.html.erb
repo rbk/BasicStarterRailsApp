@@ -14,20 +14,21 @@
       <th>Sex</th>
       <th>Group</th>
       <th>Email</th>
+      <th>Login Count</th>
       <th></th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-    <% @users.each do |user| %>
+    <% @users.reverse.each do |user| %>
     <tr>
-      <!-- <td><%= user.password %></td> -->
       <td><%= user.first_name %></td>
       <td><%= user.last_name %></td>
       <td><%= user.age %></td>
       <td><%= user.sex.capitalize %></td>
       <td><%= user.group.capitalize %></td>
       <td><%= user.email %></td>
+      <td><%= user.login_count %></td>
       <td><%= link_to 'Edit', edit_user_path(user), :class => 'btn btn-default' %></td>
       <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-default' %></td>
     </tr>

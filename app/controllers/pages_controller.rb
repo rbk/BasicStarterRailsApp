@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
 
-  before_action :authenticate_admin, only: [ :routes, :terminal ]
+  before_action :authenticate_admin, only: [ :routes, :terminal, :access_log ]
+  before_action :authenticate, only: [ :account ]
 
   def home
   end
@@ -9,6 +10,28 @@ class PagesController < ApplicationController
   end
 
   def about
+  end
+
+  def access_log
+     @access = AccessLog.all.order(:created_at).reverse_order
+  end
+
+  def account
+    @sessions = Session.all
+    # respond_to do | format |
+    #   format.xml { render xml: @sessions }
+    #   # format.json { render json: @sessions.to_json }
+    # end
+
+    # This work to render json directly:
+      # render json: @sessions
+      # return
+    
+    # Respond to multiple formats
+    respond_to do |format|
+      format.html
+      format.xml { render xml: @sessions }
+    end
   end
 
   def routes

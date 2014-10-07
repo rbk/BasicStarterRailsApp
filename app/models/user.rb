@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 	before_save :downcase_email
 	before_save :encrypt_password
 
+	before_create :set_login_count
+
 	
 	def downcase_email
 		self.email = self.email.downcase
@@ -20,6 +22,10 @@ class User < ActiveRecord::Base
 		rescue
 			self.password = BCrypt::Password.create(self.password)
 		end
+	end
+
+	def set_login_count
+		self.login_count = 0
 	end
 	
 	# before_save :check_email

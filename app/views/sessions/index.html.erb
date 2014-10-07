@@ -19,26 +19,3 @@
 		<% end %>
 	</tbody>
 </table>
-
-<h1>Access Log</h1>
-
-<table class="table">
-	<thead>
-		<tr>
-			<th>Outcome</th>
-			<th>Email</th>
-			<th>IP Address</th>
-			<th>User Agent</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @access.each do |attempt| %>
-		<tr>
-			<td><%= attempt.outcome %></td>
-			<td><%= attempt.email %></td>
-			<td><%= attempt.ip_address %></td>
-			<td><%= attempt.http_user_agent[0..50] %></td>
-		</tr>
-		<% end %>
-	</tbody>
-</table>
