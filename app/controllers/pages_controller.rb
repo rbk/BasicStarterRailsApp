@@ -1,4 +1,7 @@
 class PagesController < ApplicationController
+
+  before_action :authenticate_admin, only: [ :routes, :terminal ]
+
   def home
   end
 

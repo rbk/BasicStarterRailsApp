@@ -15,6 +15,8 @@ on submit to session new
 	application wide authentication
 		- always check for proper session cookie stored on device
 
+ADD TO USER MODEL = login_count:integer 
+
 Log Model !!!
 	- Log in count
 		- first login change password
@@ -22,8 +24,9 @@ Log Model !!!
 		- time, success/failure, ip address, email
 		- after three failures, offer to reset password
 
--
-rails g model SessionLog email:string user_id:integer login_count:integer ip_address:string
+Access Log
+rails g model AccessLog outcome:string email:string ip_address:string http_user_agent:string
+
 
 - Active users log?
 
@@ -32,6 +35,7 @@ Blog Model
 	- content
 	- author
 	- date published
+	- status
 	- categories
 	- tags(for tag cloud)
 	- comments

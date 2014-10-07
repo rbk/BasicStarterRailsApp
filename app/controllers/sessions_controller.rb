@@ -4,18 +4,31 @@ class SessionsController < ApplicationController
   before_action :authenticate_admin, only: [:index]
   
   def new
-  	email = params[:email].downcase || ''
+  	
+    email    = params[:email].downcase || ''
   	password = params[:password] || ''
-  	user = User.find_by_email email
-	  respond_to do |format|
-      if !password || !user
-        
-        # if no input or user, just notify user that they didn't do something right
-        
-        format.html { redirect_to login_path, notice: "Hopefully you can remember your credentials." }
-      
-      else 
 
+  	user = User.find_by_email email
+
+    # Log the attempt
+    access = AccessLog.new({email: email, ip_address: request.env['REMOTE_ADDR'], http_user_agent: request.env['HTTP_USER_AGENT']})
+
+    # don't run the rest of this stuff if either email or password is empty
+    if !user || !password
+      redirect_to login_path, notice: "Hopefully you can remember your credentials."
+      access.outcome = 'failure'
+      access.save
+      return
+    end
+
+    # if BCrypt::Password.new(user.password) != password
+    #   redirect_to login_path, notice: "Hopefully you can remember your credentials."
+    #   access.outcome = 'failure'
+    #   access.save
+    #   return
+    # end
+    
+    respond_to do |format|
         # validate password if user is found and password is given
         stored_password = BCrypt::Password.new(user.password)
 
@@ -23,7 +36,6 @@ class SessionsController < ApplicationController
 
           user_session = Session.where("user_id = ? AND ip = ?", user.id, request.env['REMOTE_ADDR'])
 
-          # user_session = Session.find_by_user_id(user.id)
           if user_session.any?
             format.html { redirect_to login_path, notice: "It seems that you have done this before." }          
           else
@@ -31,17 +43,19 @@ class SessionsController < ApplicationController
             format.html { redirect_to login_path, notice: "Login Successful! Welcome back!" }
           end
 
+          access.outcome = 'success'
+          access.save
           session[:user_id] = user.id
           session[:group] = user.group
+
   		  else
 
           # passwords don't match for this user so nevermind
           format.html { redirect_to login_path, notice: "Hopefully you can remember your credentials." }
   		  end
-      
-      end
-	  end
+    end      
   end
+
 
   def destroy
   	# log out/remove sessions entry from database
@@ -55,6 +69,5 @@ class SessionsController < ApplicationController
   def index
     @sessions = Session.all
   end
-
 
 end
