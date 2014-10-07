@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
   before_action :authenticate, only: [ :destroy ]
+  before_action :authenticate_admin, only: [:index]
   
   def new
   	email = params[:email].downcase || ''
@@ -50,7 +51,10 @@ class SessionsController < ApplicationController
     redirect_to login_path, notice: "You are logged out!"
   	
   end
+
   def index
     @sessions = Session.all
   end
+
+
 end

@@ -25,6 +25,7 @@ Log Model !!!
 -
 rails g model SessionLog email:string user_id:integer login_count:integer ip_address:string
 
+- Active users log?
 
 Blog Model
 	- title
