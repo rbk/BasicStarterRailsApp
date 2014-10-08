@@ -1,10 +1,5 @@
 Richard::Application.routes.draw do
 
-  get "posts/index"
-  get "posts/show"
-  get "posts/create"
-  get "posts/update"
-  get "posts/destroy"
   post "sessions/new"
   post "sessions/destroy"
   
@@ -25,6 +20,7 @@ Richard::Application.routes.draw do
   post "terminal" => "pages#terminal"
 
   resources :users
+  resources :posts
 
   root 'pages#home'
 

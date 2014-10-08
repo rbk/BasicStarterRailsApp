@@ -32,7 +32,7 @@ rails g model AccessLog outcome:string email:string ip_address:string http_user_
 rails g migration AddLoginCountToUsers login_count:integer
 
 
-Blog Model
+# Posts model and controller
 	- title
 	- content
 	- author
@@ -46,6 +46,9 @@ Blog Model
 	- approx read time ( how to calculate? )
 
 rails g model Post title:string content:text rating:integer read_time:string status:string user:references
+rails g migration AddSlugToPosts slug:string
+rails g controller posts index show create update destroy
+
 
 rails g model Category name:string
 rails g controller categories 

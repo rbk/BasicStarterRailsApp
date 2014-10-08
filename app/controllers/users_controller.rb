@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :authenticate, :authenticate_admin
 
   def index
-  	@users = User.all
+  	@users = User.all.order(:created_at).reverse_order
   end
 
   def edit
