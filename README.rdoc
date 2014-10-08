@@ -44,7 +44,8 @@ Blog Model
 	- bookmarks (button that saves bookmark and increments counter in db)
 	- star rating
 	- approx read time ( how to calculate? )
-rails g model title:string content:text status:string category:references user:references
+
+rails g model Post title:string content:text rating:integer read_time:string status:string category:references user:references
 
 rails g model Category name:string
 rails g controller categories 
