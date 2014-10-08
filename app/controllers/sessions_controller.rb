@@ -27,6 +27,8 @@ class SessionsController < ApplicationController
     #   access.save
     #   return
     # end
+
+    # TODO: Add agent orange for device and os detection
     
     respond_to do |format|
         # validate password if user is found and password is given
