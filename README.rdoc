@@ -44,12 +44,15 @@ Blog Model
 	- bookmarks (button that saves bookmark and increments counter in db)
 	- star rating
 	- approx read time ( how to calculate? )
+rails g model title:string content:text status:string category:references user:references
+
+rails g model Category name:string
+rails g controller categories 
 
 users have one account
 	- Account Model
 		- ?
 users have many blog posts
-
 
 
 # Brainstorm ( or at least a sprinkle..)
