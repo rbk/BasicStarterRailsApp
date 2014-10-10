@@ -83,33 +83,55 @@ users have many blog posts
 ## Models
 
 - Sites		
-		has_many tasks
-		has_one checklist
-
-		server name/ip ( deployed )
-		repository url
-		domain
-		dns
-		email
-		ping check ruby
-		developer notes
-
+		* has_many tasks
+		* has_one checklist
+		server:string
+		ip:string
+		repository:string
+		domain:string
+		dns:string
+		email:string
+		notes:text
+		checklist_complete:boolean
+		deployed:boolean
 
 - Task
+		
 		belongs_to site
+		belongs_to checklist
+		
 		name
 		responsible
+		due:date
 		completed:boolean
 
 - Checklist
 		belongs_to site
 		has_many tasks
+		site:references
+
 
 ## Features
 
 - Searchable/Sortable list of sites
 * Uptime checker
+		ping check ruby
 * Page speed check?
+** Tabs: Notes, Checklist, Tasks, Details
+*** Lock site from editing when someone else is editing
+
+		# time way
+		1. user clicks edit
+		2. save current editing time
+		3. if someone else trys to edit, check to see is updated_last == editing_time
+		4. if not equal, denied access
+		5. on user save, set editing_time == updated_last
+
+		# simplest way
+		1. on edit, set editing to true
+		2. on save, set editing to false
+		3. don't allow access to model with editing true
+
 
 ## Checklist
 
