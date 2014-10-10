@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Server name:</strong>
+  <%= @site.server_name %>
+</p>
+
+<p>
+  <strong>Server location:</strong>
+  <%= @site.server_location %>
+</p>
+
+<p>
+  <strong>Ip:</strong>
+  <%= @site.ip %>
+</p>
+
+<p>
+  <strong>Repository:</strong>
+  <%= @site.repository %>
+</p>
+
+<p>
+  <strong>Domain:</strong>
+  <%= @site.domain %>
+</p>
+
+<p>
+  <strong>Dns:</strong>
+  <%= @site.dns %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @site.email %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @site.notes %>
+</p>
+
+<p>
+  <strong>Checklist complete:</strong>
+  <%= @site.checklist_complete %>
+</p>
+
+<p>
+  <strong>Deployed:</strong>
+  <%= @site.deployed %>
+</p>
+
+<%= link_to 'Edit', edit_site_path(@site) %> |
+<%= link_to 'Back', sites_path %>

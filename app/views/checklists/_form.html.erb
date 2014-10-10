@@ -1,0 +1,57 @@
+<%= form_for(@checklist) do |f| %>
+  <% if @checklist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@checklist.errors.count, "error") %> prohibited this checklist from being saved:</h2>
+
+      <ul>
+      <% @checklist.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :analytics %><br>
+    <%= f.check_box :analytics %>
+  </div>
+  <div class="field">
+    <%= f.label :permalinks %><br>
+    <%= f.check_box :permalinks %>
+  </div>
+  <div class="field">
+    <%= f.label :contact_forms %><br>
+    <%= f.check_box :contact_forms %>
+  </div>
+  <div class="field">
+    <%= f.label :site_url %><br>
+    <%= f.check_box :site_url %>
+  </div>
+  <div class="field">
+    <%= f.label :allow_robots %><br>
+    <%= f.check_box :allow_robots %>
+  </div>
+  <div class="field">
+    <%= f.label :css_compressed %><br>
+    <%= f.check_box :css_compressed %>
+  </div>
+  <div class="field">
+    <%= f.label :javascript_compressed %><br>
+    <%= f.check_box :javascript_compressed %>
+  </div>
+  <div class="field">
+    <%= f.label :redirects %><br>
+    <%= f.check_box :redirects %>
+  </div>
+  <div class="field">
+    <%= f.label :google_site_map %><br>
+    <%= f.check_box :google_site_map %>
+  </div>
+  <div class="field">
+    <%= f.label :site_id %><br>
+    <%= f.text_field :site_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

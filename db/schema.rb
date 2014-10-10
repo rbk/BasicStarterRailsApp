@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141008130045) do
+ActiveRecord::Schema.define(version: 20141010063433) do
 
   create_table "access_logs", force: true do |t|
     t.string   "outcome"
@@ -21,6 +21,23 @@ ActiveRecord::Schema.define(version: 20141008130045) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "checklists", force: true do |t|
+    t.boolean  "analytics"
+    t.boolean  "permalinks"
+    t.boolean  "contact_forms"
+    t.boolean  "site_url"
+    t.boolean  "allow_robots"
+    t.boolean  "css_compressed"
+    t.boolean  "javascript_compressed"
+    t.boolean  "redirects"
+    t.boolean  "google_site_map"
+    t.integer  "site_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "checklists", ["site_id"], name: "index_checklists_on_site_id"
 
   create_table "groups", force: true do |t|
     t.string   "name"
@@ -50,6 +67,21 @@ ActiveRecord::Schema.define(version: 20141008130045) do
     t.string   "email"
     t.string   "group"
     t.string   "ip"
+  end
+
+  create_table "sites", force: true do |t|
+    t.string   "server_name"
+    t.string   "server_location"
+    t.string   "ip"
+    t.string   "repository"
+    t.string   "domain"
+    t.string   "dns"
+    t.string   "email"
+    t.text     "notes"
+    t.boolean  "checklist_complete"
+    t.boolean  "deployed"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

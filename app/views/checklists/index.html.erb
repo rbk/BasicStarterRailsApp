@@ -1,0 +1,45 @@
+<h1>Listing checklists</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Analytics</th>
+      <th>Permalinks</th>
+      <th>Contact forms</th>
+      <th>Site url</th>
+      <th>Allow robots</th>
+      <th>Css compressed</th>
+      <th>Javascript compressed</th>
+      <th>Redirects</th>
+      <th>Google site map</th>
+      <th>Site</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @checklists.each do |checklist| %>
+      <tr>
+        <td><%= checklist.analytics %></td>
+        <td><%= checklist.permalinks %></td>
+        <td><%= checklist.contact_forms %></td>
+        <td><%= checklist.site_url %></td>
+        <td><%= checklist.allow_robots %></td>
+        <td><%= checklist.css_compressed %></td>
+        <td><%= checklist.javascript_compressed %></td>
+        <td><%= checklist.redirects %></td>
+        <td><%= checklist.google_site_map %></td>
+        <td><%= checklist.site %></td>
+        <td><%= link_to 'Show', checklist %></td>
+        <td><%= link_to 'Edit', edit_checklist_path(checklist) %></td>
+        <td><%= link_to 'Destroy', checklist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Checklist', new_checklist_path %>

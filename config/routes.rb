@@ -1,5 +1,9 @@
 Richard::Application.routes.draw do
 
+  resources :sites
+
+  resources :checklists
+
   post "sessions/new"
   post "sessions/destroy"
   
