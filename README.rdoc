@@ -77,3 +77,49 @@ users have many blog posts
 
 	This is cool because you can get any information you need from this page from the pages controller.
 
+
+# Launch Checklist/Client Log
+
+## Models
+
+- Sites		
+		has_many tasks
+		has_one checklist
+
+		server name/ip ( deployed )
+		repository url
+		domain
+		dns
+		email
+		ping check ruby
+		developer notes
+
+
+- Task
+		belongs_to site
+		name
+		responsible
+		completed:boolean
+
+- Checklist
+		belongs_to site
+		has_many tasks
+
+## Features
+
+- Searchable/Sortable list of sites
+* Uptime checker
+* Page speed check?
+
+## Checklist
+
+- Google Analytics installed
+- Refresh Peramlinks ( WP )
+- Contact Forms Ready
+- Site Url correct
+- Allow Robots
+- Sass Compressed
+- Javascript compressed
+- 301 Redirects in place
+- Site map submited to Google
+

@@ -12,4 +12,16 @@
  *= require_tree .
  */
  
-body { padding-top: 70px; }
+body { 
+	padding-top: 70px;
+	
+	.failure-row { background-color: #FFBEBE; }
+	.success-row { background-color: #D0FFD0; }
+ 
+	&.dark {
+		background-color: #111; 
+		color: #fff;
+		.failure-row { background-color:#C92B2B; }
+		.success-row { background-color:#287428; }
+	}
+}

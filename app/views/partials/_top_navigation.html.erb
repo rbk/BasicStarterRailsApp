@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
         <a class="navbar-brand" href="/"><%= request.env['REMOTE_ADDR'] %></a>
@@ -14,7 +14,6 @@
         <li><%= link_to 'Users', users_path %></li>
         <li><%= link_to 'Sessions',sessions_path %></li>
         <li><%= link_to 'Access Log',accesslog_path %></li>
-        <li><%= link_to 'Posts', posts_path %></li>
       <% end %>
     </ul>
 

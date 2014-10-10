@@ -4,7 +4,6 @@ Richard::Application.routes.draw do
   post "sessions/destroy"
   
   get "sessions" => "sessions#index"
-  
   get "accesslog" => "pages#access_log"
 
 
@@ -20,7 +19,6 @@ Richard::Application.routes.draw do
   post "terminal" => "pages#terminal"
 
   resources :users
-  resources :posts
 
   root 'pages#home'
 

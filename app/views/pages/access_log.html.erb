@@ -13,9 +13,9 @@
 	<tbody>
 		<% @access.each do |attempt| %>
 			<% if attempt.outcome == 'failure' %>
-				<tr style="background-color:#FFBEBE;">
+				<tr class="failure-row">
 			<% else %>
-				<tr style="background-color:#D0FFD0">
+				<tr class="success-row">
 			<% end %>
 			<td><%= time_ago_in_words(attempt.created_at) %>&nbsp;ago</td>
 			<td><%= attempt.outcome %></td>
