@@ -1,8 +1,9 @@
 Richard::Application.routes.draw do
 
-  resources :sites
+  get 'tasks' => 'tasks#index'
+  post 'tasks' => 'tasks#create'
+  post 'tasks/new' => 'tasks#new'
 
-  resources :checklists
 
   post "sessions/new"
   post "sessions/destroy"

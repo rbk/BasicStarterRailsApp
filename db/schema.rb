@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141010063433) do
+ActiveRecord::Schema.define(version: 20141011205902) do
 
   create_table "access_logs", force: true do |t|
     t.string   "outcome"
@@ -83,6 +83,17 @@ ActiveRecord::Schema.define(version: 20141010063433) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "tasks", force: true do |t|
+    t.string   "name"
+    t.date     "due"
+    t.string   "assigned_to"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tasks", ["user_id"], name: "index_tasks_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email"

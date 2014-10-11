@@ -18,6 +18,7 @@ class PagesController < ApplicationController
 
   def account
     @sessions = Session.all
+    # FirstMailer.welcome_mail.deliver
     # respond_to do | format |
     #   format.xml { render xml: @sessions }
     #   # format.json { render json: @sessions.to_json }

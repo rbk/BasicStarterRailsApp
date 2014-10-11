@@ -1,1 +1,0 @@
-json.extract! @checklist, :id, :analytics, :permalinks, :contact_forms, :site_url, :allow_robots, :css_compressed, :javascript_compressed, :redirects, :google_site_map, :site_id, :created_at, :updated_at
