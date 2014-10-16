@@ -22,43 +22,12 @@ ActiveRecord::Schema.define(version: 20141011205902) do
     t.datetime "updated_at"
   end
 
-  create_table "checklists", force: true do |t|
-    t.boolean  "analytics"
-    t.boolean  "permalinks"
-    t.boolean  "contact_forms"
-    t.boolean  "site_url"
-    t.boolean  "allow_robots"
-    t.boolean  "css_compressed"
-    t.boolean  "javascript_compressed"
-    t.boolean  "redirects"
-    t.boolean  "google_site_map"
-    t.integer  "site_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "checklists", ["site_id"], name: "index_checklists_on_site_id"
-
   create_table "groups", force: true do |t|
     t.string   "name"
     t.integer  "user_count"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "posts", force: true do |t|
-    t.string   "title"
-    t.text     "content"
-    t.integer  "rating"
-    t.string   "read_time"
-    t.string   "status"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "slug"
-  end
-
-  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
   create_table "sessions", force: true do |t|
     t.string   "user_id"
@@ -68,32 +37,6 @@ ActiveRecord::Schema.define(version: 20141011205902) do
     t.string   "group"
     t.string   "ip"
   end
-
-  create_table "sites", force: true do |t|
-    t.string   "server_name"
-    t.string   "server_location"
-    t.string   "ip"
-    t.string   "repository"
-    t.string   "domain"
-    t.string   "dns"
-    t.string   "email"
-    t.text     "notes"
-    t.boolean  "checklist_complete"
-    t.boolean  "deployed"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "tasks", force: true do |t|
-    t.string   "name"
-    t.date     "due"
-    t.string   "assigned_to"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "tasks", ["user_id"], name: "index_tasks_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email"
