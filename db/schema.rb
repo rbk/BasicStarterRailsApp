@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141011205902) do
+ActiveRecord::Schema.define(version: 20141007052825) do
 
   create_table "access_logs", force: true do |t|
     t.string   "outcome"
