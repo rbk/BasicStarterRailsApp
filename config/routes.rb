@@ -1,10 +1,5 @@
 Richard::Application.routes.draw do
 
-  get 'tasks' => 'tasks#index'
-  post 'tasks' => 'tasks#create'
-  post 'tasks/new' => 'tasks#new'
-
-
   post "sessions/new"
   post "sessions/destroy"
   

@@ -33,8 +33,6 @@ group :doc do
 end
 
 group :development do
-	gem 'guard'
-  gem 'guard-livereload', require: false
   gem "hirb", "~> 0.7.1"
 end
 
@@ -42,7 +40,6 @@ end
 gem 'bcrypt', '~> 3.1.2'
 
 gem 'whenever', :require => false
-gem 'redis', '~> 3.1.0'
 
 # Use unicorn as the app server
 # gem 'unicorn'
